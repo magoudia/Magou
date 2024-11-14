@@ -1,0 +1,815 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<!--"{% static 'css/bootstrap.min.css'%}"-->
+<head>
+    <meta charset="utf-8">
+    <title>AgriTech</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    
+
+    <!-- Favicon -->
+    <link href="{%static 'img/favicon.ico' %}" rel="icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="{% static 'https://fonts.gstatic.com'%}">
+    <link href="{%static 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap'%}" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="{%static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css'%}" rel="stylesheet">
+    <link href="{% static 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css' %}" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{%static 'lib/owlcarousel/assets/owl.carousel.min.css'%}" rel="stylesheet">
+    <!-- Bootstrap Icons CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
+
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{%static 'css/bootstrap.min.css ' %}" rel="stylesheet">
+    <!-- Bootstrap Icons CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.theme.default.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js"></script>
+
+
+    <!-- Template Stylesheet -->
+    <link href="{%static 'css/style.css ' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+<body>
+    {% block content %}
+    <!-- Topbar Start -->
+    <div class="container-fluid px-5 d-none d-lg-block">
+        <div class="row gx-5 py-3 align-items-center">
+            <div class="col-lg-3">
+                <div class="d-flex align-items-center justify-content-start">
+                    <i class="bi bi-phone-vibrate fs-1 text-primary me-2"></i>
+                    <h2 class="mb-0"> 33 456 78 79</h2>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="d-flex align-items-center justify-content-center">
+                    <a href="{% static 'index.html' %}" class="navbar-brand ms-lg-5">
+                        <h1 class="m-0 display-4 text-primary"><span class="text-secondary">Agri</span>Tech</h1>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="d-flex align-items-center justify-content-end">
+                    <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-primary btn-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-primary navbar-dark shadow-sm py-3 py-lg-0 px-3 px-lg-5">
+        <a href="{% static 'index.html' %}" class="navbar-brand d-flex d-lg-none">
+            <h1 class="m-0 display-4 text-secondary"><span class="text-white">Agri</span>Tech</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav mx-auto py-0">
+                <a href="{%  url 'index' %}" class="nav-item nav-link active">Accueil</a>
+                <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+                <a href="{%  url 'service' %}" class="nav-item nav-link">Service</a>
+                <a href="{% url  'product'%}" class="nav-item nav-link">Produit</a>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Catégories</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a href="{% url 'legumes' %}" class="dropdown-item">Légumes</a></li>
+                                
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                
+                <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
+            </div>
+        </div>
+       <!-- <div class="button-container">
+            <button class="nav-button" onclick="window.location.href='{% url 'connexion' %}'">Connexion</button>
+            <button class="nav-button" onclick="window.location.href='{% url 'inscription' %}'">Inscription</button>
+        </div>-->
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0">
+        <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100" src="{%static 'img/agr_2.jpg'%}" alt="Image" style="object-fit: cover;height: 700px"  >
+                    <div class="carousel-caption top-0 bottom-0 start-0 end-0 d-flex flex-column align-items-center justify-content-center">
+                        <div class="text-start p-5" style="max-width: 900px;">
+                            <h3 class="text-white">Légumes biologiques</h3>
+                            <h1 class="display-1 text-white mb-md-4">Bienvenue à 
+                                AgriTech  Sénégal</h1>
+                            <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">Explore</a>
+                            <a href="{% url 'contact' %}" class="btn btn-secondary py-md-3 px-md-5">Contact</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="{%static 'img/agri3.jpg'%}" alt="Image" style="object-fit: cover;height: 700px">
+                    <div class="carousel-caption top-0 bottom-0 start-0 end-0 d-flex flex-column align-items-center justify-content-center">
+                        <div class="text-start p-5" style="max-width: 900px;">
+                            <h3 class="text-white">Fruits biologiques</h3>
+                            <h1 class="display-1 text-white mb-md-4">Fruits biologiques pour une meilleure santé</h1>
+                            <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">Explore</a>
+                            <a href="" class="btn btn-secondary py-md-3 px-md-5">Contact</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Retour</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Suivant</span>
+            </button>
+        </div>
+    </div>
+    <!-- Carousel End -->
+
+
+    <!-- Banner Start -->
+    <div class="container-fluid banner mb-5">
+        <div class="container">
+            <div class="row gx-0">
+                <div class="col-md-6">
+                    <div class="bg-primary bg-vegetable d-flex flex-column justify-content-center p-5" style="height: 300px;">
+                        <h3 class="text-white mb-3">Légumes biologiques</h3>
+                        <p class="text-white">optez pour des légumes biologiques savoureux et riches en nutriments, cultivés sans produits 
+                            chimiques pour une alimentation plus saine. Profitez de la fraîcheur et du goût authentique de nos légumes bio, bons pour vous et pour la planète </p>
+                        <a class="text-white fw-bold" href="">Lire la suite<i class="bi bi-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="bg-secondary bg-fruit d-flex flex-column justify-content-center p-5" style="height: 300px;">
+                        <h3 class="text-white mb-3">Fruits biologiques</h3>
+                        <p class="text-white">Savourez la fraîcheur et la richesse en vitamines de nos fruits biologiques, cultivés sans pesticides pour une santé naturelle. Choisissez 
+                            des fruits bio pour un goût authentique et des bienfaits durables, bons pour vous et pour l'environnement .</p>
+                        <a class="text-white fw-bold" href="">Lire la suite<i class="bi bi-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner Start -->
+
+
+    <!-- About Start -->
+    <div class="container-fluid about pt-5">
+        <div class="container">
+            <div class="row gx-5">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="d-flex h-100 border border-5 border-primary border-bottom-0 pt-4">
+                        <img class="img-fluid mt-auto mx-auto" src="{%static 'img/thione-niang.png' %}">
+                    </div>
+                </div>
+                <div class="col-lg-6 pb-5">
+                    <div class="mb-3 pb-2">
+                        <h6 class="text-primary text-uppercase">Qui sommes-nous</h6>
+                        <h1 class="display-5">Nous produisons des aliments biologiques pour votre famille</h1>
+                    </div>
+                    <p class="mb-4">Nos aliments biologiques sont cultivés avec soin et sans produits chimiques, 
+                        pour offrir à votre famille une alimentation saine et respectueuse de l'environnement.</p>
+                    <div class="row gx-5 gy-4">
+                        <div class="col-sm-6">
+                            <i class="fa fa-seedling display-1 text-secondary"></i>
+                            <h4>100% biologique</h4>
+                            <p class="mb-0">Un produit 100% biologique garantit qu'il est cultivé et fabriqué sans aucun produit chimique de synthèse, pesticide ou OGM, 
+                                offrant ainsi une option plus saine et respectueuse de l'environnement.</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <i class="fa fa-award display-1 text-secondary"></i>
+                            <h4>Primé</h4>
+                            <p class="mb-0">Découvrez nos produits primés, synonymes de qualité et d'excellence, 
+                                et faites le choix d'une alimentation saine qui a déjà séduit des milliers de clients satisfaits. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Facts Start -->
+    <div class="container-fluid bg-primary facts py-5 mb-5">
+        <div class="container py-5">
+            <div class="row gx-5 gy-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="d-flex">
+                        <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fa fa-star fs-4 text-white"></i>
+                        </div>
+                        <div class="ps-4">
+                            <h5 class="text-white">Notre expérience</h5>
+                            <h1 class="display-5 text-white mb-0" data-toggle="counter-up">12345</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="d-flex">
+                        <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fa fa-users fs-4 text-white"></i>
+                        </div>
+                        <div class="ps-4">
+                            <h5 class="text-white">Spécialiste agricole</h5>
+                            <h1 class="display-5 text-white mb-0" data-toggle="counter-up">20</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="d-flex">
+                        <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fa fa-check fs-4 text-white"></i>
+                        </div>
+                        <div class="ps-4">
+                            <h5 class="text-white">Projet complet</h5>
+                            <h1 class="display-5 text-white mb-0" data-toggle="counter-up">100</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="d-flex">
+                        <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fa fa-mug-hot fs-4 text-white"></i>
+                        </div>
+                        <div class="ps-4">
+                            <h5 class="text-white">Des clients satisfaits</h5>
+                            <h1 class="display-5 text-white mb-0" data-toggle="counter-up">0</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Facts End -->
+    
+
+    <!-- Services Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6">
+                    <div class="mb-3">
+                        <h6 class="text-primary text-uppercase">Services</h6>
+                        <h1 class="display-5">Services à la ferme biologique</h1>
+                    </div>
+                    <p class="mb-4">Profitez de nos services à la ferme biologique, où nous vous offrons une expérience unique de découverte et de connexion avec la nature, 
+                        tout en vous garantissant des produits frais et sains directement de notre exploitation à votre table.</p>
+                    <a href="" class="btn btn-primary py-md-3 px-md-5">Qui sommes nous </a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-item bg-light text-center p-5">
+                        <i class="fa fa-carrot display-1 text-primary mb-3"></i>
+                        <h4>Légumes frais</h4>
+                        <p class="mb-0">Savourez nos légumes frais, récoltés chaque jour pour vous garantir un goût 
+                            authentique et une qualité exceptionnelle, directement de notre ferme à votre assiette</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-item bg-light text-center p-5">
+                        <i class="fa fa-apple-alt display-1 text-primary mb-3"></i>
+                        <h4>Fruits frais</h4>
+                        <p class="mb-0">Dégustez nos fruits frais, cueillis à maturité pour une explosion de saveurs et de nutriments, 
+                            offrant le meilleur de la nature à chaque bouchée</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-item bg-light text-center p-5">
+                        <i class="fas fa-carrot display-1 text-primary mb-3"></i> <!-- Icône de carotte -->
+                        <h4>Légumes frais</h4>
+                        <p class="mb-0">Savourez nos légumes frais, cultivés sans pesticides pour garantir une qualité exceptionnelle et un goût authentique, directement de notre ferme à votre assiette.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-item bg-light text-center p-5">
+                        <i class="fas fa-tractor display-1 text-primary mb-3"></i> <!-- Icône de tracteur -->
+                        <h4>Technologie agricole moderne</h4>
+                        <p class="mb-0">Découvrez notre technologie agricole moderne, conçue pour améliorer l'efficacité des cultures et favoriser une agriculture durable et respectueuse de l'environnement.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-item bg-light text-center p-5">
+                        <i class="fas fa-seedling display-1 text-primary mb-3"></i>
+                        <h4>Plans de culture</h4>
+                        <p class="mb-0">Adoptez nos plans de culture, élaborés pour optimiser vos récoltes tout en respectant les meilleures pratiques agroécologiques et en préservant la biodiversité.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- Services End -->
+
+
+    <!-- Features Start -->
+    <div class="container-fluid bg-primary feature py-5 pb-lg-0 my-5">
+        <div class="container py-5 pb-lg-0">
+            <div class="mx-auto text-center mb-3 pb-2" style="max-width: 500px;">
+                <h6 class="text-uppercase text-secondary">Fonctionnalités</h6>
+                <h1 class="display-5 text-white">Pourquoi nous choisir!!!</h1>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-3">
+                    <div class="text-white mb-5">
+                        <div class="bg-secondary rounded-pill d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fa fa-seedling fs-4 text-white"></i>
+                        </div>
+                        <h4 class="text-white">100% biologique</h4>
+                        <p class="mb-0">Optez pour nos produits 100% biologiques et offrez à votre famille une alimentation saine et savoureuse, 
+                            sans pesticides ni produits chimiques. </p>
+                    </div>
+                    <div class="text-white">
+                        <div class="bg-secondary rounded-pill d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fa fa-award fs-4 text-white"></i>
+                        </div>
+                        <h4 class="text-white">Primé</h4>
+                        <p class="mb-0">Découvrez nos produits primés, reconnus pour leur qualité exceptionnelle et 
+                            leur innovation dans le domaine de l'agriculture durable.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="d-block bg-white h-100 text-center p-5 pb-lg-0">
+                        <p>Découvrez nos produits primés, qui incarnent l'excellence et la qualité dans le domaine de l'agriculture durable. 
+                            Chaque bouchée est le fruit d'un savoir-faire passionné, reconnu par des experts du secteur. En choisissant nos produits, 
+                            vous optez pour une alimentation authentique et respectueuse de l'environnement. 
+                            Rejoignez la communauté des clients satisfaits qui savourent le meilleur de la nature</p>
+                        <img class="img-fluid" src="{%static 'img/feature.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="text-white mb-5">
+                        <div class="bg-secondary rounded-pill d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fa fa-tractor fs-4 text-white"></i>
+                        </div>
+                        <h4 class="text-white">Agriculture moderne</h4>
+                        <p class="mb-0">L'agriculture moderne utilise des technologies innovantes et durables pour maximiser la production tout en respectant l'environnement, notamment par l'agriculture de précision et les drones</p>
+                    </div>
+                    <div class="text-white">
+                        <div class="bg-secondary rounded-pill d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fa fa-phone-alt fs-4 text-white"></i>
+                        </div>
+                        <h4 class="text-white">Assistance 24h/24 et 7j/7</h4>
+                        <p class="mb-0">Bénéficiez d'une assistance 24h/24 et 7j/7, pour répondre à toutes vos questions et vous accompagner à chaque étape de votre expérience. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Features Start -->
+
+
+    <!-- Products Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="mx-auto text-center mb-5" style="max-width: 500px;">
+                <h6 class="text-primary text-uppercase">Produits</h6>
+                <h1 class="display-5">Nos produits frais et biologiques</h1>
+            </div>
+            <div class="owl-carousel product-carousel px-5">
+                <div class="pb-5">
+                    <div class="product-item position-relative bg-white d-flex flex-column text-center">
+                        <img class="img-fluid mb-4" src="{%static 'img/product-1.png' %}" alt="">
+                        <h6 class="mb-3">Légume biologique</h6>
+                        <h5 class="text-primary mb-0">500 frs , KG</h5>
+                        <div class="btn-action d-flex justify-content-center">
+                            <a class="btn bg-primary py-2 px-3" href=""><i class="bi bi-cart text-white"></i></a>
+                            <a class="btn bg-secondary py-2 px-3" href=""><i class="bi bi-eye text-white"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pb-5">
+                    <div class="product-item position-relative bg-white d-flex flex-column text-center">
+                        <img class="img-fluid mb-4" src="{%static 'img/product-2.png' %}" alt="">
+                        <h6 class="mb-3">Légume biologique</h6>
+                        <h5 class="text-primary mb-0">500 frs , KG</h5>
+                        <div class="btn-action d-flex justify-content-center">
+                            <a class="btn bg-primary py-2 px-3" href=""><i class="bi bi-cart text-white"></i></a>
+                            <a class="btn bg-secondary py-2 px-3" href=""><i class="bi bi-eye text-white"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pb-5">
+                    <div class="product-item position-relative bg-white d-flex flex-column text-center">
+                        <img class="img-fluid mb-4" src="{%static 'img/product-1.png' %}" alt="">
+                        <h6 class="mb-3">Légume biologique</h6>
+                        <h5 class="text-primary mb-0">800 frs , KG</h5>
+                        <div class="btn-action d-flex justify-content-center">
+                            <a class="btn bg-primary py-2 px-3" href=""><i class="bi bi-cart text-white"></i></a>
+                            <a class="btn bg-secondary py-2 px-3" href=""><i class="bi bi-eye text-white"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pb-5">
+                    <div class="product-item position-relative bg-white d-flex flex-column text-center">
+                        <img class="img-fluid mb-4" src="{%static 'img/product-2.png' %}" alt="">
+                        <h6 class="mb-3">Légume biologique</h6>
+                        <h5 class="text-primary mb-0">700 frs , KG</h5>
+                        <div class="btn-action d-flex justify-content-center">
+                            <a class="btn bg-primary py-2 px-3" href=""><i class="bi bi-cart text-white"></i></a>
+                            <a class="btn bg-secondary py-2 px-3" href=""><i class="bi bi-eye text-white"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pb-5">
+                    <div class="product-item position-relative bg-white d-flex flex-column text-center">
+                        <img class="img-fluid mb-4" src="{%static 'img/product-1.png' %}" alt="">
+                        <h6 class="mb-3">Légume biologique</h6>
+                        <h5 class="text-primary mb-0">400 frcs , KG</h5>
+                        <div class="btn-action d-flex justify-content-center">
+                            <a class="btn bg-primary py-2 px-3" href=""><i class="bi bi-cart text-white"></i></a>
+                            <a class="btn bg-secondary py-2 px-3" href=""><i class="bi bi-eye text-white"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Products End -->
+
+
+    <!-- Testimonial Start -->
+    <div class="container-fluid bg-testimonial py-5 my-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="owl-carousel testimonial-carousel p-5">
+                        <div class="testimonial-item text-center text-white">
+                            <img class="img-fluid mx-auto p-2 border border-5 border-secondary rounded-circle mb-4" src="{% static 'img/testimonial-3.jpg'%}" alt="">
+                            <p class="client-description" style="font-size: 1.1rem;">
+                                "Des produits de qualité et un excellent suivi client. J'ai été agréablement surpris par la fraîcheur et le goût des produits, ainsi que par la rapidité de livraison. Merci pour cette expérience agréable !"
+                            </p>
+                            <hr class="mx-auto w-25">
+                            <h4 class="text-white mb-0">Mohamet Diagne</h4>
+                        </div>
+                        <div class="testimonial-item text-center text-white">
+                            <img class="img-fluid mx-auto p-2 border border-5 border-secondary rounded-circle mb-4" src="{% static 'img/testimonial-4.jpg'%}" alt="">
+                            <p class="client-description" style="font-size: 1.1rem;">
+                                "Une expérience incroyable ! Les produits sont toujours frais et l'équipe est très réactive. Chaque commande est un plaisir, et je me sens vraiment bien pris en charge. Je recommande sans hésitation !"
+                            </p>
+                            <hr class="mx-auto w-25">
+                            <h4 class="text-white mb-0">Aîda Diatta</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+
+
+    <!-- Team Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="mx-auto text-center mb-5" style="max-width: 500px;">
+                <h6 class="text-primary text-uppercase">L’équipe</h6>
+                <h1 class="display-5">Nous sommes des agriculteurs biologiques professionnels</h1>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6">
+                    <div class="row g-0">
+                        <div class="col-10">
+                            <div class="position-relative">
+                                <img class="img-fluid w-100" src="{%static 'img/team-1.jpg' %}" alt="">
+                                <div class="position-absolute start-0 bottom-0 w-100 py-3 px-4" style="background: rgba(52, 173, 84, .85);">
+                                    <h4 class="text-white">Nom de l’agriculteur</h4>
+                                    <span class="text-white">Désignation</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="h-100 d-flex flex-column align-items-center justify-content-around bg-secondary py-5">
+                                <a class="btn btn-square rounded-circle bg-white" href="#"><i class="fab fa-twitter text-secondary"></i></a>
+                                <a class="btn btn-square rounded-circle bg-white" href="#"><i class="fab fa-facebook-f text-secondary"></i></a>
+                                <a class="btn btn-square rounded-circle bg-white" href="#"><i class="fab fa-linkedin-in text-secondary"></i></a>
+                                <a class="btn btn-square rounded-circle bg-white" href="#"><i class="fab fa-instagram text-secondary"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="row g-0">
+                        <div class="col-10">
+                            <div class="position-relative">
+                                <img class="img-fluid w-100" src="{%static 'img/team-2.jpg' %}" alt="">
+                                <div class="position-absolute start-0 bottom-0 w-100 py-3 px-4" style="background: rgba(52, 173, 84, .85);">
+                                    <h4 class="text-white">Nom de l’agriculteur</h4>
+                                    <span class="text-white">Désignation</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="h-100 d-flex flex-column align-items-center justify-content-around bg-secondary py-5">
+                                <a class="btn btn-square rounded-circle bg-white" href="#"><i class="fab fa-twitter text-secondary"></i></a>
+                                <a class="btn btn-square rounded-circle bg-white" href="#"><i class="fab fa-facebook-f text-secondary"></i></a>
+                                <a class="btn btn-square rounded-circle bg-white" href="#"><i class="fab fa-linkedin-in text-secondary"></i></a>
+                                <a class="btn btn-square rounded-circle bg-white" href="#"><i class="fab fa-instagram text-secondary"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="row g-0">
+                        <div class="col-10">
+                            <div class="position-relative">
+                                <img class="img-fluid w-100" src="{%static 'img/team-3.jpg' %}" alt="">
+                                <div class="position-absolute start-0 bottom-0 w-100 py-3 px-4" style="background: rgba(52, 173, 84, .85);">
+                                    <h4 class="text-white">Nom de l’agriculteur</h4>
+                                    <span class="text-white">Désignation</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="h-100 d-flex flex-column align-items-center justify-content-around bg-secondary py-5">
+                                <a class="btn btn-square rounded-circle bg-white" href="#"><i class="fab fa-twitter text-secondary"></i></a>
+                                <a class="btn btn-square rounded-circle bg-white" href="#"><i class="fab fa-facebook-f text-secondary"></i></a>
+                                <a class="btn btn-square rounded-circle bg-white" href="#"><i class="fab fa-linkedin-in text-secondary"></i></a>
+                                <a class="btn btn-square rounded-circle bg-white" href="#"><i class="fab fa-instagram text-secondary"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+
+
+    <!-- Blog Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="mx-auto text-center mb-5" style="max-width: 500px;">
+                <h6 class="text-primary text-uppercase">Notre blog</h6>
+                <h1 class="display-5">Derniers articles de notre article de blog</h1>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <div class="blog-item position-relative overflow-hidden">
+                        <img class="img-fluid" src="{%static 'img/cultivateur-1.jpg' %}" alt="">
+                        <a class="blog-overlay" href="">
+                            <h4 class="text-white">Découvrez la fraîcheur de nos tomates biologiques.</h4>
+                            <span class="text-white fw-bold">28 Octobre 2025</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="blog-item position-relative overflow-hidden">
+                        <img class="img-fluid" src="{%static 'img/cultivateur-2.jpg' %}" alt="">
+                        <a class="blog-overlay" href="">
+                            <h4 class="text-white">Savourez la fraîcheur de notre salade biologique. </h4>
+                            <span class="text-white fw-bold">28 Octobre 2025</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="blog-item position-relative overflow-hidden">
+                        <img class="img-fluid" src="{%static 'img/cultivateur-3.jpg' %}" alt="">
+                        <a class="blog-overlay" href="">
+                            <h4 class="text-white">Découvrez notre riz biologique .</h4>
+                            <span class="text-white fw-bold">28 Octobre 2025</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Blog End -->
+    
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-footer bg-primary text-white mt-5">
+        <div class="container">
+            <div class="row gx-5">
+                <div class="col-lg-8 col-md-6">
+                    <div class="row gx-5">
+                        <div class="col-lg-4 col-md-12 pt-5 mb-5">
+                            <h4 class="text-white mb-4">Contactez-nous</h4>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-geo-alt text-white me-2"></i>
+                                <p class="text-white mb-0">24 Zac mbao , Dakar, Sénégal</p>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-envelope-open text-white me-2"></i>
+                                <p class="text-white mb-0">agritech@gmail.com</p>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-telephone text-white me-2"></i>
+                                <p class="text-white mb-0">33 456 78 79</p>
+                            </div>
+                            <div class="d-flex mt-4">
+                                <a class="btn btn-secondary btn-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-secondary btn-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-secondary btn-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-secondary btn-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+                            <h4 class="text-white mb-4">Liens rapides</h4>
+                            <div class="d-flex flex-column justify-content-start">
+                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Accueil</a>
+                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Qui sommes-nous</a>
+                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Nos services</a>
+                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Rencontrez l’équipe</a>
+                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Dernier blog</a>
+                                <a class="text-white" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Contactez-nous</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+                            <h4 class="text-white mb-4">Liens populaires</h4>
+                            <div class="d-flex flex-column justify-content-start">
+                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Accueil</a>
+                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Qui sommes-nous</a>
+                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Nos services</a>
+                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Rencontrez l’équipe</a>
+                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Dernier blog</a>
+                                <a class="text-white" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Contactez-nous</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-lg-n5">
+                    <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-secondary p-5">
+                        <h4 class="text-white">Inscription à notre Newsletter</h4>
+                        <h6 class="text-white">Recevez les dernières actualités et offres spéciales</h6>
+                        <p>Restez informé des nouveautés et profitez d'offres exclusives en vous abonnant.</p>
+
+                        <form action="">
+                            <div class="input-group">
+                                <input type="text" class="form-control border-white p-3" placeholder="Votre Email">
+                                <button class="btn btn-primary">S’enregistrer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-dark text-white py-4">
+        <div class="container text-center">
+            <p class="mb-0">&copy; <a class="text-secondary fw-bold" href="#">AgriTech</a>Tout droit réservé. Designer by  <a class="text-secondary fw-bold" href="https://htmlcodex.com">HTML Codex</a></p>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-secondary py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    {% endblock %}
+        <!-- Bootstrap Bundle with Popper (nécessaire pour les dropdowns) -->
+
+
+    
+    
+    <!-- JavaScript Libraries -->
+    <script src="{% static 'https://code.jquery.com/jquery-3.4.1.min.js' %}"></script>
+    
+    <script src="{%static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{%static 'lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{%static 'lib/counterup/counterup.min.js'%}"></script>
+    <script src="{%static 'lib/owlcarousel/owl.carousel.min.js'%}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{%static 'js/main.js' %}"></script>
+    
+    <style>
+        /* Style général de la page */
+        body {
+            background: url("{% static 'img/background.jpg' %}") no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        /* Conteneur des boutons de connexion et inscription */
+        .button-container {
+            position: relative;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+            margin-top: -30px;
+        }
+
+        /* Style des boutons de navigation */
+        .nav-button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Style du contenu principal */
+        .content {
+            text-align: center;
+            color: white;
+            padding-top: 100px;
+        }
+
+        .content h1 {
+            font-size: 2.5rem;
+        }
+
+        .content p {
+            font-size: 1.2rem;
+        }
+    </style>
+    <!-- jQuery (nécessaire pour Owl Carousel) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+   
+
+
+    <!-- Custom JavaScript pour initialiser Owl Carousel -->
+    <script>
+        $(document).ready(function(){
+            $('.product-carousel').owlCarousel({
+                loop: true,
+                margin: 30,
+                nav: true,
+                dots: false,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                responsive: {
+                    0: { items: 1 },
+                    576: { items: 2 },
+                    768: { items: 3 },
+                    992: { items: 4 }
+                }
+            });
+        });
+    </script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript pour initialiser le carrousel testimonial -->
+    <script>
+        $(document).ready(function(){
+            $('.testimonial-carousel').owlCarousel({
+                loop: true,
+                margin: 30,
+                nav: false,
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                items: 1
+            });
+        });
+    </script>
+    <!-- Bootstrap Bundle with Popper (nécessaire pour les dropdowns) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

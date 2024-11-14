@@ -1,0 +1,274 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inscription</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+    <!-- Overlay pour l'image de fond avec opacité réduite -->
+    <div class="background-overlay"></div>
+
+    <!-- Titre fixe AgriTech en haut de la page -->
+    <h1 class="brand-title"><span style="color: #4caf50;">Agri</span><span style="color: #ffa500;">Tech</span></h1>
+
+    <!-- Texte défilant "AgriTech" derrière le conteneur -->
+    <!--<div class="marquee">
+        <span><span style="color: #4caf50;">AgriTech</span> &nbsp; &nbsp; <span style="color: #ffa500;">AgriTech</span> &nbsp; &nbsp; <span style="color: #4caf50;">AgriTech</span></span>
+    </div>-->
+
+    <!-- Conteneur principal -->
+    <div class="signup-container">
+        <div class="form-container">
+            <h2>S'inscrire</h2>
+
+            <form method="post" action="{% url 'inscription' %}">
+                {% csrf_token %}
+
+                <label for="username" class="form-label">Nom d'utilisateur :</label>
+                <input type="text" id="username" name="username" required><br>
+
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+
+                <label for="password" class="form-label">Mot de passe:</label>
+                <div class="input-group mb-3">
+                    <input type="password" id="password" name="password" class="form-control" required>
+                    
+                </div>
+
+                <label for="confirm_password" class="form-label">Confirmez le mot de passe:</label>
+                <div class="input-group mb-3">
+                    <input type="password" id="confirm_password" name="confirm_password" class="form-control" required>
+                    
+                </div>
+
+                <!-- Nouveau champ pour le rôle de l'utilisateur -->
+                <label for="role" class="form-label">Êtes-vous :</label>
+                <select id="role" name="role" class="form-control" required>
+                    <option value="agriculteur">Agriculteur</option>
+                    <option value="acheteur">Acheteur</option>
+                </select>
+
+                <button type="submit" style="margin-top: 20px;">S'inscrire</button>
+            </form>
+
+            <p>Ou connectez-vous avec : </p>
+            <div class="social-login">
+                <a href="#" class="social-icon google">
+                    <i class="bi bi-google"></i>
+                </a>
+                <a href="#" class="social-icon facebook">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="#" class="social-icon instagram">
+                    <i class="bi bi-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (inclut Popper pour les tooltips et popovers) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <!-- Icons Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <!-- Custom JS -->
+    <script>
+        // Fonction pour afficher/masquer le mot de passe
+        document.getElementById('togglePassword1').addEventListener('click', function () {
+            const passwordField = document.getElementById('password');
+            const passwordIcon = this.querySelector('i');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                passwordIcon.classList.remove('bi-eye');
+                passwordIcon.classList.add('bi-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                passwordIcon.classList.remove('bi-eye-slash');
+                passwordIcon.classList.add('bi-eye');
+            }
+        });
+
+        document.getElementById('togglePassword2').addEventListener('click', function () {
+            const confirmPasswordField = document.getElementById('confirm_password');
+            const confirmPasswordIcon = this.querySelector('i');
+            if (confirmPasswordField.type === 'password') {
+                confirmPasswordField.type = 'text';
+                confirmPasswordIcon.classList.remove('bi-eye');
+                confirmPasswordIcon.classList.add('bi-eye-slash');
+            } else {
+                confirmPasswordField.type = 'password';
+                confirmPasswordIcon.classList.remove('bi-eye-slash');
+                confirmPasswordIcon.classList.add('bi-eye');
+            }
+        });
+
+        // Vérification si les mots de passe correspondent avant la soumission du formulaire
+        document.querySelector('form').addEventListener('submit', function (event) {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+
+            if (password !== confirmPassword) {
+                event.preventDefault(); // Empêche la soumission du formulaire
+                alert("Les mots de passe ne correspondent pas.");
+            }
+        });
+    </script>
+
+    <!-- Custom CSS -->
+    <style>
+        /* Style de la page d'inscription avec un fond d'image */
+        body {
+            background: url("{% static 'img/paysage.jpg' %}") no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow-y: auto;
+        }
+
+        /* Overlay pour réduire l'opacité de l'image de fond */
+        .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+
+        /* Style du titre AgriTech en haut de la page */
+        .brand-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            z-index: 1;
+            color: #333;
+        }
+
+        /* Texte défilant AgriTech derrière le conteneur */
+        .marquee {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            color: #4caf50;
+            font-size: 3rem;
+            font-weight: bold;
+            z-index: -1;
+            transform: translateY(-50%);
+        }
+
+        .marquee span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 15s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Conteneur de l'inscription avec scroll */
+        .signup-container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 500px;
+            height: 500px;  /* Hauteur fixe pour le conteneur */
+            overflow-y: auto;  /* Activation du scroll uniquement à l'intérieur du conteneur */
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .form-container {
+            margin: 0;
+        }
+
+        .signup-container h2 {
+            font-size: 1.8rem;
+            color: #333333;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Alignement des labels à gauche */
+        .form-label {
+            font-size: 0.9rem;
+            color: #555555;
+            text-align: left;
+            display: block;
+            margin-top: 1rem;
+        }
+
+        /* Style des champs de saisie */
+        .signup-container input[type="text"],
+        .signup-container input[type="email"],
+        .signup-container input[type="password"],
+        .signup-container select {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0 1.5rem 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Style du bouton */
+        .signup-container button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .signup-container button:hover {
+            background-color: #45a049;
+        }
+
+        /* Style des icônes de réseaux sociaux */
+        .social-login {
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            margin: 0 10px;
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .social-icon.google {
+            color: #db4437;
+        }
+
+        .social-icon.facebook {
+            color: #3b5998;
+        }
+
+        .social-icon.instagram {
+            color: #c13584;
+        }
+    </style>
+</body>
+</html>

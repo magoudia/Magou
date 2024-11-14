@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <!-- Icons Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+<body>
+    <div class="login-container">
+        <!-- Texte défilant avec deux couleurs -->
+        <div class="marquee">
+            <p><span class="color1">Bienvenue</span> <span class="color2">à AgriTech</span></p>
+        </div>
+        
+        <h2>Connexion</h2>
+        <form method="post" action="{% url 'connexion' %}" onsubmit="return validateForm()">
+            {% csrf_token %}
+            
+            <label for="username" class="form-label">Nom d'utilisateur:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password" class="form-label">Mot de passe:</label>
+            <div class="input-group mb-3">
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+
+            <button type="submit">Se connecter</button>
+        </form>
+
+        <!-- Texte pour les utilisateurs sans compte et bouton pour s'inscrire -->
+        <p>Vous n'avez pas de compte ? <a href="{% url 'inscription' %}" class="signup-link">S'inscrire</a></p>
+    </div>
+
+    <!-- Bootstrap JS (inclut Popper pour les tooltips et popovers) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <!-- Custom CSS pour le style de la page de connexion -->
+    <style>
+        /* Style de la page de connexion */
+        body {
+            background: url("{% static 'img/connexion.jpg' %}") no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            font-size: 1.8rem;
+            color: #333333;
+            margin-bottom: 1.5rem;
+        }
+
+        .login-container label {
+            font-size: 0.9rem;
+            color: #555555;
+        }
+
+        .login-container .input-group {
+            margin-bottom: 1rem;
+        }
+
+        .login-container input {
+            padding: 0.75rem;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #4caf50;
+            color: white;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Style pour le texte et le lien d'inscription */
+        .login-container p {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #555555;
+        }
+
+        .signup-link {
+            color: #4caf50;
+            text-decoration: none;
+        }
+
+        .signup-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Style du texte défilant */
+        .marquee {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-size: 0.9rem;
+            color: #555555;
+            text-align: left;
+            display: block;
+            margin-top: 1rem;
+        }
+
+        .marquee p {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: marquee 10s linear infinite;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .color1 {
+            color: #4caf50; /* Couleur verte */
+        }
+
+        .color2 {
+            color: #ff5722; /* Couleur orange */
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+
+    <!-- JavaScript pour valider les champs -->
+    <script>
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Vérification si les champs sont vides
+            if (username === "" || password === "") {
+                alert("Veuillez remplir tous les champs avant de soumettre.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
