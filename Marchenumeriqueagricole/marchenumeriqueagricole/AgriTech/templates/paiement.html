@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Paiement</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f9f9f9; }
+        .container { max-width: 600px; margin: auto; padding: 20px; background: #fff; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        .title { font-size: 24px; text-align: center; margin-bottom: 20px; color: #333; }
+        .payment-options { display: flex; flex-direction: column; gap: 15px; }
+        .payment-option { display: flex; align-items: center; padding: 15px; border: 1px solid #ddd; border-radius: 5px; cursor: pointer; transition: all 0.3s ease; }
+        .payment-option:hover { background-color: #f0f0f0; }
+        .payment-option img { width: 50px; margin-right: 20px; }
+        .payment-option p { font-size: 18px; color: #333; margin: 0; }
+        .total { text-align: center; font-size: 20px; margin-top: 20px; color: #555; }
+        .pay-button { width: 100%; background-color: #4CAF50; color: white; padding: 10px; font-size: 18px; border: none; border-radius: 5px; cursor: pointer; margin-top: 30px; }
+        .pay-button:hover { background-color: #45a049; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="title">Choisissez votre méthode de paiement</h2>
+
+        <div class="payment-options">
+            <div class="payment-option" onclick="selectPaymentMethod('Wave')">
+                <img src="{% static 'img/wave.jpeg' %}" alt="Wave">
+                <p>Payer avec Wave</p>
+            </div>
+            <div class="payment-option" onclick="selectPaymentMethod('Orange Money')">
+                <img src="{% static 'img/orange_money.jpeg' %}" alt="Orange Money">
+                <p>Payer avec Orange Money</p>
+            </div>
+            <div class="payment-option" onclick="selectPaymentMethod('Free Money')">
+                <img src="{% static 'img/free_money.png' %}" alt="Free Money">
+                <p>Payer avec Free Money</p>
+            </div>
+            <div class="payment-option" onclick="selectPaymentMethod('Carte Bancaire')">
+                <img src="{% static 'img/carte_credit.png' %}" alt="Carte Bancaire">
+                <p>Payer par Carte Bancaire</p>
+            </div>
+        </div>
+
+        <div class="total">Total : {{ total }} FCFA</div>
+
+        <button class="pay-button" onclick="confirmPayment()">Confirmer le paiement</button>
+    </div>
+
+    <script>
+        function selectPaymentMethod(method) {
+            alert(`Vous avez choisi : ${method}`);
+            // Enregistrer le mode de paiement sélectionné dans une variable ou un champ caché si nécessaire
+        }
+
+        function confirmPayment() {
+            alert('Votre paiement est en cours de traitement.');
+            // Ajoutez ici la logique pour traiter le paiement
+        }
+    </script>
+</body>
+</html>

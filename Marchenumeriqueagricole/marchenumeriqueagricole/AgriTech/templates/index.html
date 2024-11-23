@@ -100,7 +100,8 @@
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Catégories</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a href="{% url 'legumes' %}" class="dropdown-item">Légumes</a></li>
+                                <li><a href="{% url 'legumes' %}" class="dropdown-item">legumes</a></li>
+                                <a href="{% url 'fruits'%}" class="dropdown-item">fruits</a>
                                 
                             </ul>
                         </li>
@@ -110,10 +111,18 @@
                 <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
             </div>
         </div>
-       <!-- <div class="button-container">
+        <div class="navbar-nav ms-auto py-0">
+            <a href="{% url 'cart' %}" class="nav-item nav-link position-relative">
+                <i class="bi bi-cart-fill text-white" style="font-size: 1.5rem;"></i>
+                <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    
+                </span>
+            </a>
+        </div>
+       <div class="button-container">
             <button class="nav-button" onclick="window.location.href='{% url 'connexion' %}'">Connexion</button>
             <button class="nav-button" onclick="window.location.href='{% url 'inscription' %}'">Inscription</button>
-        </div>-->
+        </div>
     </nav>
     <!-- Navbar End -->
 
@@ -406,7 +415,7 @@
                         <h6 class="mb-3">Légume biologique</h6>
                         <h5 class="text-primary mb-0">500 frs , KG</h5>
                         <div class="btn-action d-flex justify-content-center">
-                            <a class="btn bg-primary py-2 px-3" href=""><i class="bi bi-cart text-white"></i></a>
+                            <a class="btn bg-primary py-2 px-3" href="javascript:void(0);"><i class="bi bi-cart text-white"></i></a>
                             <a class="btn bg-secondary py-2 px-3" href=""><i class="bi bi-eye text-white"></i></a>
                         </div>
                     </div>
@@ -417,7 +426,7 @@
                         <h6 class="mb-3">Légume biologique</h6>
                         <h5 class="text-primary mb-0">500 frs , KG</h5>
                         <div class="btn-action d-flex justify-content-center">
-                            <a class="btn bg-primary py-2 px-3" href=""><i class="bi bi-cart text-white"></i></a>
+                            <a class="btn bg-primary py-2 px-3" href="javascript:void(0);"><i class="bi bi-cart text-white"></i></a>
                             <a class="btn bg-secondary py-2 px-3" href=""><i class="bi bi-eye text-white"></i></a>
                         </div>
                     </div>
@@ -428,7 +437,7 @@
                         <h6 class="mb-3">Légume biologique</h6>
                         <h5 class="text-primary mb-0">800 frs , KG</h5>
                         <div class="btn-action d-flex justify-content-center">
-                            <a class="btn bg-primary py-2 px-3" href=""><i class="bi bi-cart text-white"></i></a>
+                            <a class="btn bg-primary py-2 px-3" href="javascript:void(0);"><i class="bi bi-cart text-white"></i></a>
                             <a class="btn bg-secondary py-2 px-3" href=""><i class="bi bi-eye text-white"></i></a>
                         </div>
                     </div>
@@ -439,7 +448,7 @@
                         <h6 class="mb-3">Légume biologique</h6>
                         <h5 class="text-primary mb-0">700 frs , KG</h5>
                         <div class="btn-action d-flex justify-content-center">
-                            <a class="btn bg-primary py-2 px-3" href=""><i class="bi bi-cart text-white"></i></a>
+                            <a class="btn bg-primary py-2 px-3" href="javascript:void(0);"><i class="bi bi-cart text-white"></i></a>
                             <a class="btn bg-secondary py-2 px-3" href=""><i class="bi bi-eye text-white"></i></a>
                         </div>
                     </div>
@@ -450,7 +459,7 @@
                         <h6 class="mb-3">Légume biologique</h6>
                         <h5 class="text-primary mb-0">400 frcs , KG</h5>
                         <div class="btn-action d-flex justify-content-center">
-                            <a class="btn bg-primary py-2 px-3" href=""><i class="bi bi-cart text-white"></i></a>
+                            <a class="btn bg-primary py-2 px-3" href="javascript:void(0);"><i class="bi bi-cart text-white"></i></a>
                             <a class="btn bg-secondary py-2 px-3" href=""><i class="bi bi-eye text-white"></i></a>
                         </div>
                     </div>
@@ -755,6 +764,34 @@
             font-size: 1.2rem;
         }
     </style>
+    
+    <script>
+        // Sélectionne le compteur de panier dans le menu
+        let cartCount = document.getElementById('cart-count');
+        let count = 0;
+
+        // Initialise le compteur à partir du localStorage si disponible
+        count = localStorage.getItem('cartCount') ? parseInt(localStorage.getItem('cartCount')) : 0;
+        cartCount.textContent = count;
+
+        // Sélectionne tous les boutons "Ajouter au panier"
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                
+                // Incrémente le compteur
+                count++;
+                cartCount.textContent = count;
+
+                // Enregistre dans le localStorage pour persistance
+                localStorage.setItem('cartCount', count);
+                
+                // Optionnel : afficher un message de confirmation
+                alert("Produit ajouté au panier!");
+            });
+        });
+
+    </script>
     <!-- jQuery (nécessaire pour Owl Carousel) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Owl Carousel JS -->
@@ -806,9 +843,42 @@
                 items: 1
             });
         });
+
     </script>
+
+    
+    
+
     <!-- Bootstrap Bundle with Popper (nécessaire pour les dropdowns) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Sélection du compteur de panier dans le menu
+        let cartCount = document.getElementById('cart-count');
+        let count = 0;
+
+        // Charger le compteur depuis le localStorage
+        count = localStorage.getItem('cartCount') ? parseInt(localStorage.getItem('cartCount')) : 0;
+        cartCount.textContent = count;
+
+        // Ajout d'un événement sur chaque bouton "Ajouter au panier"
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+
+        // Incrémenter le compteur
+        count++;
+        cartCount.textContent = count;
+
+        // Enregistrer dans le localStorage
+        localStorage.setItem('cartCount', count);
+
+        // Afficher un message de confirmation
+        alert("Produit ajouté au panier !");
+            });
+        });
+
+    </script>
 
 </body>
 

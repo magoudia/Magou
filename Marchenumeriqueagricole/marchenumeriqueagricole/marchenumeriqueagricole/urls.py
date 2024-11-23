@@ -22,7 +22,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/',views.index,name='index'),
+    path('ajouter/', views.ajouter_produit, name='ajouter_produit'),
+    path('',views.index,name='index'),
     path('about/',views.about,name='about'),
     path('service/',views.service,name='service'),
     path('product/',views.product,name='product'),
@@ -33,12 +34,18 @@ urlpatterns = [
     path('testimonial/',views.testimonial,name='testimonial'),
     path('contact/',views.contact,name='contact'),
     path('service/',views.contact,name='service'),
-    path('', views.connexion, name='connexion'),
+    path('connexion', views.connexion, name='connexion'),
     path('inscription/', views.inscription, name='inscription'),
     path('legumes/', views.legumes, name='legumes'),
-    path('produits/', views.produits, name='produits'),
+     path('legumes/', views.legumes, name='legumes'),
+    path('fruits/', views.fruits, name='fruits'),
+    path('cart/', views.cart, name='cart'),
+    path('paiement/', views.paiement, name='paiement'),
+    path('liste_produits/', views.liste_produits, name='liste_produits'),
+    path('produits/supprimer/<int:produit_id>/', views.supprimer_produit, name='supprimer_produit'),
+    path('produits/modifier/<int:produit_id>/', views.modifier_produit, name='modifier_produit'),
+    path('add-to-cart/<int:produit_id>/', views.add_to_cart, name='add_to_cart'),
+    path('admin/commandes/', views.traiter_commandes, name='traiter_commandes'),
     
-]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

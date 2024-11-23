@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CustomUser, Agriculteur, Operateur, Produit, Commande, Transaction, Feedback, SuiviDeStock
+from .models import CommandeProduit, CustomUser, Agriculteur, Operateur, Produit, Commande, Transaction, Feedback, SuiviDeStock
 from django.contrib.auth.admin import UserAdmin
 
 class CustomUserAdmin(UserAdmin):
@@ -41,10 +41,7 @@ class FeedbackAdmin(admin.ModelAdmin):
     search_fields = ['comment', 'user__username']
     list_editable = ['rating']
 
-@admin.register(Commande)
-class CommandeAdmin(admin.ModelAdmin):
-    list_display = ('id', 'operateur', 'produit', 'quantity', 'status')
-    list_filter = ('status', 'operateur')
+
 
 @admin.register(Transaction)
 class TransactionAdmin(admin.ModelAdmin):
@@ -53,3 +50,24 @@ class TransactionAdmin(admin.ModelAdmin):
 @admin.register(SuiviDeStock)
 class SuiviDeStockAdmin(admin.ModelAdmin):
     list_display = ('produit', 'current_quantity', 'alert_threshold')
+
+class CommandeProduitInline(admin.TabularInline):
+    model = CommandeProduit
+    extra = 0
+
+class CommandeAdmin(admin.ModelAdmin):  # Hérite correctement de admin.ModelAdmin
+    list_display = ('id', 'utilisateur', 'afficher_produits', 'date_commande', 'statut')
+    list_filter = ('statut', 'utilisateur')
+    search_fields = ('utilisateur__username', 'id')
+
+    inlines = [CommandeProduitInline]
+
+    def afficher_produits(self, obj):
+        """
+        Affiche les produits associés à une commande dans une seule colonne.
+        """
+        return ", ".join([f"{cp.produit.nom} (x{cp.quantite})" for cp in obj.commandeproduit_set.all()])
+    afficher_produits.short_description = "Produits"
+
+# Enregistrement des modèles dans l'admin
+admin.site.register(Commande, CommandeAdmin)

@@ -1,6 +1,8 @@
 
+from django.utils.timezone import now
 from django.db import models
 from django.contrib.auth.models import User
+
 
 # Create your models here.
 from django.contrib.auth.models import AbstractUser
@@ -77,14 +79,23 @@ class Feedback(models.Model):
 
 # Modèle Commande
 class Commande(models.Model):
-    operateur = models.ForeignKey(Operateur, on_delete=models.CASCADE)
-    produit = models.ForeignKey(Produit, on_delete=models.CASCADE)
-    quantity = models.IntegerField()
-    status = models.CharField(max_length=20, choices=[('pending', 'En attente'), ('completed', 'Complétée')])
+    STATUT_CHOICES = [
+        ('En attente', 'En attente'),
+        ('Traitée', 'Traitée'),
+        ('Annulée', 'Annulée'),
+    ]
 
+    utilisateur = models.ForeignKey(User, on_delete=models.CASCADE)
+    produits = models.ManyToManyField(Produit, through='CommandeProduit')
+    
+    def default_date():
+         return now()
+
+    date_commande = models.DateTimeField(default=default_date) 
+    statut = models.CharField(max_length=50, choices=STATUT_CHOICES, default='En attente')
 
     def __str__(self):
-        return f"Commande {self.id} - {self.produit.name}"
+        return f"Commande #{self.id} - {self.utilisateur.username}"
 
 # Modèle Transaction
 class Transaction(models.Model):
@@ -106,3 +117,11 @@ class SuiviDeStock(models.Model):
 
     def __str__(self):
         return f"Suivi de stock pour {self.produit.name}"
+    
+class CommandeProduit(models.Model):
+    commande = models.ForeignKey(Commande, on_delete=models.CASCADE)
+    produit = models.ForeignKey(Produit, on_delete=models.CASCADE)
+    quantite = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f"{self.quantite} x {self.produit.nom} (Commande #{self.commande.id})"

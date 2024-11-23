@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gérer les Commandes</title>
+</head>
+<body>
+    <h1>Gestion des Commandes</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Utilisateur</th>
+                <th>Produits</th>
+                <th>Date</th>
+                <th>Statut</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for commande in commandes %}
+            <tr>
+                <td>{{ commande.id }}</td>
+                <td>{{ commande.utilisateur.username }}</td>
+                <td>
+                    {% for produit in commande.produits.all %}
+                        {{ produit.nom }} ({{ produit.prix }} frcs)<br>
+                    {% endfor %}
+                </td>
+                <td>{{ commande.date_commande }}</td>
+                <td>{{ commande.statut }}</td>
+                <td>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="commande_id" value="{{ commande.id }}">
+                        <select name="statut">
+                            <option value="En attente" {% if commande.statut == 'En attente' %}selected{% endif %}>En attente</option>
+                            <option value="Traitée" {% if commande.statut == 'Traitée' %}selected{% endif %}>Traitée</option>
+                            <option value="Annulée" {% if commande.statut == 'Annulée' %}selected{% endif %}>Annulée</option>
+                        </select>
+                        <button type="submit">Mettre à jour</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
